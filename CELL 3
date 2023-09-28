@@ -1,0 +1,31 @@
+#Actually run the bot (you can close your browser after this. I've noted about 1-hour consistency for total online time.
+
+import subprocess
+import os
+
+# Directory path to the "disc_bot" directory
+directory_path = "/content/disc_bot"  # Set the correct path to the Node.js script
+
+# Command to run Node.js script
+command = "node ."
+
+try:
+    # Change the working directory to the correct location
+    os.chdir(directory_path)
+
+    # Start the Node.js script and capture its stdout and stderr in real-time
+    process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+
+    # Read and print the output line by line as it becomes available
+    for line in process.stdout:
+        print(line, end='')
+
+    # Check the return code (0 for success)
+    return_code = process.wait()
+    if return_code == 0:
+        print("Node.js script executed successfully.")
+    else:
+        print(f"Node.js script exited with return code {return_code}")
+
+except Exception as e:
+    print(f"An error occurred: {e}")
