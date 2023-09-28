@@ -6,22 +6,22 @@ Basically, just install the requirements:
 
 note - your filetree should look like this
 
-"src" folder
+# "src" folder
 --> index.js
 --> "functions" folder
 --> "events" folder
 --> "commands" folder
 
-"functions" folder
+# "functions" folder
 --> handleCommands.js
 --> handleEvents.js
 
-"events" folder does not contain anything but is required to be there
+# "events" folder does not contain anything but is required to be there
 
-"commands" folder
+# "commands" folder
 --> "community" folder
 
-"community" folder
+# "community" folder
 --> 8ball.js
 --> rizz-generate.js
 --> image-generate.js
