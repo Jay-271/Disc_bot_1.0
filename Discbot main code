@@ -224,12 +224,12 @@ client.on('ready', msg => {
 
 var min_count = 0;
 function sendMessage() {
-    const CHANNEL_ID = '1147690334223089805'; // Replace with the actual channel ID
+    const CHANNEL_ID = 'YOUR_CHANNEL_ID'; // Replace with the actual channel ID
     min_count += 5;
     const MESSAGE_CONTENT = `Time online: ${min_count}`;
     if (min_count === 50) {
-        channel.send(`<@262788670464065538> Refresh the bot!`)
-            .then(() => console.log('Rito refresh pls'))
+        channel.send(`Refresh the bot!`)
+            .then(() => console.log('refresh pls'))
             .catch(console.error);
     }
 
