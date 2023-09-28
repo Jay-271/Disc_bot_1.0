@@ -1,0 +1,91 @@
+#NOTE - REPLACE your discord token and the openai token in the right place to create the .env file
+#run nde setup
+
+import os
+import subprocess
+import json
+
+# Manually specify the path to the 'disc_bot' directory
+disc_bot_path = '/content/disc_bot'
+
+command = f'npm install -g n'
+command = f'cd {disc_bot_path} && {command}'
+
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = process.communicate()
+
+if process.returncode != 0:
+    print(f"Error: {stderr.decode('utf-8')}")
+else:
+    print(f"stdout: {stdout.decode('utf-8')}")
+
+command = f'n latest'
+command = f'cd {disc_bot_path} && {command}'
+
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = process.communicate()
+
+if process.returncode != 0:
+    print(f"Error: {stderr.decode('utf-8')}")
+else:
+    print(f"stdout: {stdout.decode('utf-8')}")
+
+# Command to install 'discord.js' and 'openai' packages within the 'disc_bot' directory
+command = f'npm install openai@4 discord.js dotenv'
+# Change the current working directory to 'disc_bot' before running the command
+command = f'cd {disc_bot_path} && {command}'
+
+# Run the command and capture the output
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = process.communicate()
+
+if process.returncode != 0:
+    print(f"Error: {stderr.decode('utf-8')}")
+else:
+    print(f"stdout: {stdout.decode('utf-8')}")
+
+
+command = f'npm install'
+command = f'cd {disc_bot_path} && {command}'
+
+process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+stdout, stderr = process.communicate()
+
+if process.returncode != 0:
+    print(f"Error: {stderr.decode('utf-8')}")
+else:
+    print(f"stdout: {stdout.decode('utf-8')}")
+
+# Specify the path to your package.json file
+package_json_path = '/content/disc_bot/package.json'
+
+# Specify the new value for the "main" property
+new_main_value = 'src/index.js'  # Modify this to your desired value
+
+# Read the existing package.json file
+with open(package_json_path, 'r') as json_file:
+    data = json.load(json_file)
+
+# Update the "main" property
+data['main'] = new_main_value
+
+# Write the updated data back to the package.json file
+with open(package_json_path, 'w') as json_file:
+    json.dump(data, json_file, indent=2)
+
+print(f'Updated "{package_json_path}" with new "main" value: {new_main_value}')
+
+# Specify the content of the .env file
+env_content = """
+TOKEN = YOUR_DISCORD_TOKEN_HERE
+GPT_API = YOUR_OPENAI_API_HERE
+"""
+
+# Specify the path where you want to create the .env file
+env_file_path = '/content/disc_bot/.env'  # Adjust the path as needed
+
+# Write the content to the .env file
+with open(env_file_path, 'w') as env_file:
+    env_file.write(env_content)
+
+print('.env file created successfully.\n\n\tReady to cook')
