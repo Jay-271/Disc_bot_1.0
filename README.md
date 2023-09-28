@@ -1,5 +1,6 @@
 # Disc_bot_1.0
 Just my discord bot ran with node
+you have to replace YOUR_CHANNEL_ID in main src code (for sending a message to a specifc channel in discord)
 
 Basically, just install the requirements:
 # .env openai@4 node discord.js
@@ -13,6 +14,7 @@ Basically, just install the requirements:
 --> "commands" folder
 
 # "functions" folder
+Note - you have to replace YOUR_GUILD_ID with thte right one and YOUR_CLIENT_ID witth the right one.
 --> handleCommands.js
 --> handleEvents.js
 
