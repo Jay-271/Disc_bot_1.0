@@ -1,3 +1,4 @@
+//just for fun rizz reply lol
 const { SlashCommandBuilder } = require('discord.js');
 const { OpenAI } = require('openai');
 
