@@ -51,22 +51,23 @@ client.on('messageCreate', (message) => {
         return;
     }
     //bozo check nerfed to 50/50 with 3 extra cases for a guy named durza in a private server I own, just for fun
+        //you can edit these messages to whatever you'd like... including the check
     if (message.content.toLowerCase().includes('bozo')) {
 
         let msgNum = getRandomIntInclusive(0, 6);
 
         if (message.author.tag === 'durza_.') {
             if (msgNum === 3)
-                message.reply('u just a bitch <:raphhmph:1135272043621916783>');
+                message.reply('<:raphhmph:1135272043621916783>');
             else if (msgNum === 4)
-                message.reply('shut yo linguini bozo ahh up <:deadstare:1135228365046042625>');
+                message.reply('<:deadstare:1135228365046042625>');
             else if (msgNum === 5)
-                message.reply('ily too <3 uwu senpai~ <:pinkheart:1140328656686809099>');
+                message.reply('<:pinkheart:1140328656686809099>');
         }
         if (msgNum === 0)
             message.reply('nah ur the bozo <:hutaosip:1130744786295468052>');
         else if (msgNum === 1)
-            message.reply('bozo u fkn bozo <:raphhmph:1135272043621916783>');
+            message.reply('<:raphhmph:1135272043621916783>');
         else if (msgNum === 2)
             message.reply('the real bozo is durza but aight <a:Thanku:1140114123871494275>');
     }
@@ -80,7 +81,7 @@ client.on('messageCreate', (message) => {
         });
     }
 
-    //replaces hersh bozo name of whateveer the fk it is
+    //replaces hersh ID name of some weird characters she has so that bot can read along with openai....
     if (message.author.id === 230377956831133696) {
         message.author.username = "hersh";
     }
@@ -148,6 +149,7 @@ client.on('messageCreate', (message) => {
 
                 if (msg.content.toLowerCase().includes('bozo') && msg.author.id === client.user.id) return;
                 var username = msg.author.username.replace(/\s+/g, '_').replace(/[^\w\s]/gi, '');
+                    //sometimes after regex "fixation" for the lack of a better term returns an empty string which openai DOES NOT like
                 if (username === "") {
                     username = "hersh";
                 }
@@ -192,7 +194,7 @@ client.on('messageCreate', (message) => {
 
 
                 const responseWithDere = (`(${randomDere_cut})\n\t` + responseMessage);
-
+                    //replies all content in openai reply but in chunks discord can handle...
                 for (let i = 0; i < responseMessage.length; i += chunkSizeLimit) {
                     const chunk = responseWithDere.substring(i, i + chunkSizeLimit);
                     await message.reply(chunk);
