@@ -2,14 +2,14 @@ const { SlashCommandBuilder, EmbedBuilder} = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-    .setName("ritos-balls")
+    .setName("8ball")
     .setDescription(`Let me decide the answer`)
     .addStringOption(option => option.setName(`question`).setDescription(`Question at hand:`).setRequired(true)),
     async execute (interaction) {        
         const { options } = interaction;
 
         const question = options.getString(`question`);
-        choice = ["🎱: Ong boss ", "🎱: All fax no printer", "🎱: Yes. Like fr... yes.", "🎱: Man wtf i dont get paid enuf for this shit", "🎱: Depends, if you say it then it gotta be true", "🎱: No.", 
+        choice = ["🎱: Ong boss ", "🎱: All fax no printer", "🎱: Yes. Like fr... yes.", "🎱: Man  i dont get paid enuf for this ", "🎱: Depends, if you say it then it gotta be true", "🎱: No.", 
         "🎱: Only today.", "🎱: No u", "🎱: Holdup let me cook 🔥🍳", "🎱: Holdup let me cook 🔥🍳", "🎱: Maybe... maybe not.", "🎱: The fuck kinda shit is this 💀", "🎱: Yes."]
         const ball = Math.floor(Math.random() * choice.length);
 
@@ -22,6 +22,7 @@ module.exports = {
     .addFields({ name: "Answer", value: `${choice[ball]}`, inline: true})
 
     await interaction.reply({ embeds: [embed] });
+        //old code for when i had a button, instead the above just sends it.
         /*
         
         const embed  = new EmbedBuilder()
